@@ -4,14 +4,14 @@ const router = express.Router();
 
 const books = [
     {
-        id: '123',
-        author: 'John Doe',
-        title: 'JS book'
+pu        id: '1',
+        author: 'Aleksandr Puixkin',
+        title: 'The Dream',
     },
     {
-        id: '234',
-        author: 'John Doe',
-        title: 'JS book'
+        id: '2',
+        author: 'Nikolai Gogol',
+        title: 'The Overcoat',
     },
 ];
 
@@ -36,6 +36,19 @@ router.post('/', function (req, res, next) {
     };
     books.push(book);
     res.json(book);
+});
+
+router.put('/:id', function (req, res, next) {
+
+    books.forEach(book => {
+        if (book.id === req.params.id) {
+            book.author = req.body.author;
+            book.title = req.body.title;
+        }
+    });
+
+    const newBook = books.find(item => item.id === req.params.id);
+    res.json(newBook);
 });
 
 module.exports = router;
