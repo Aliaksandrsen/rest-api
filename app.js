@@ -19,6 +19,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/books', booksRouter);
 
-app.listen(3000, () => {
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
     console.log('Project start on 3000 port');
 });
